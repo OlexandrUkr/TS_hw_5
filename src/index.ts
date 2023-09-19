@@ -133,3 +133,48 @@ class BookService implements IBookService {
     return (book) ? this.getAuthorById(book.authorId) : null;
   }
 }
+
+//Перше завдання
+
+interface ICalculator3 {
+  add3(firstNum: number, secondNum: number): number;
+  minus3(firstNum: number, secondNum: number): number;
+  multiply3(firstNum: number, secondNum: number): number;
+  devide3(firstNum: number, secondNum: number): number;
+}
+
+enum Action3 {
+  PL = '+',
+  MI = '-',
+  MU = '*',
+  DI = '/',
+}
+
+class Calculator3 implements ICalculator3 {
+  add3(firstNum: number, secondNum: number): number {
+    return firstNum + secondNum;
+  }
+  minus3(firstNum: number, secondNum: number): number {
+    return firstNum - secondNum;
+  }
+  multiply3(firstNum: number, secondNum: number): number {
+    return firstNum * secondNum;
+  }
+  devide3(firstNum: number, secondNum: number): number {
+    if (secondNum === 0) {throw  new Error('division by zero error');}
+      return firstNum / secondNum;
+  }
+}
+
+function calculate3(calc3: ICalculator3, act: Action3, fist: number, sec: number): number {
+  switch (act) {
+    case Action3.PL:
+      return calc3.add3(fist, sec);
+    case Action3.MI:
+      return calc3.minus3(fist, sec);
+    case Action3.MU:
+      return calc3.multiply3(fist, sec);
+    case Action3.DI:
+      return calc3.devide3(fist, sec);  
+  }
+}
